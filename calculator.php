@@ -1,12 +1,10 @@
 <!--Plugin CSS file with desired skin-->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.1/css/ion.rangeSlider.min.css"/>
 <!--jQuery-->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js">// <![CDATA[
-
-// ]]></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <!--Plugin JavaScript file-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.1/js/ion.rangeSlider.min.js"></script>
-<style><!--
+<style>
 html{scroll-behavior:smooth}
     .PageContent--narrow {
         max-width: 1200px;
@@ -350,7 +348,7 @@ overflow: hidden;
             font-size: 14px;
         }
     }
---></style>
+</style>
 <div class="tc-wrapper">
 <div class="tc-form-wrapper">
 <div class="tc-unit-wrapper"><span class="tc-unit active" data-unit="us"><span class="tc-unit active" data-unit="us"> Imperial Units</span></span> <span class="tc-unit" data-unit="metric"><span class="tc-unit" data-unit="metric"> Metric units</span></span><hr /></div>
@@ -441,6 +439,8 @@ overflow: hidden;
 </div>
 </div>
 <script>// <![CDATA[
+(function($) {
+
 $(".js-range-slider").ionRangeSlider({
         skin: "square",
         grid: true,
@@ -501,6 +501,88 @@ $(".js-range-slider").ionRangeSlider({
 /**************
  * Number Counter
 **************/
+
+    $.fn.countTo = function(options) {
+        // merge the default plugin settings with the custom options
+        options = $.extend({}, $.fn.countTo.defaults, options || {});
+
+        // how many times to update the value, and how much to increment the value on each update
+        var loops = Math.ceil(options.speed / options.refreshInterval),
+            increment = (options.to - options.from) / loops;
+
+        return $(this).each(function() {
+            var _this = this,
+                loopCount = 0,
+                value = options.from,
+                interval = setInterval(updateTimer, options.refreshInterval);
+
+            function updateTimer() {
+                value += increment;
+                loopCount++;
+                $(_this).html(value.toFixed(options.decimals));
+
+                if (typeof(options.onUpdate) == 'function') {
+                    options.onUpdate.call(_this, value);
+                }
+
+                if (loopCount >= loops) {
+                    clearInterval(interval);
+                    value = options.to;
+
+                    if (typeof(options.onComplete) == 'function') {
+                        options.onComplete.call(_this, value);
+                    }
+                }
+            }
+        });
+    };
+
+    $.fn.countTo.defaults = {
+        from: 0,  // the number the element should start at
+        to: 100,  // the number the element should end at
+        speed: 1000,  // how long it should take to count between the target numbers
+        refreshInterval: 100,  // how often the element should be updated
+        decimals: 0,  // the number of decimal places to show
+        onUpdate: null,  // callback method for every time the element is updated,
+        onComplete: null,  // callback method for when the element finishes updating
+    };
+
+/*$('.tc-submit').bind('countTo',function(options) {
+    // merge the default plugin settings with the custom options
+	options = $.extend({}, $.fn.countTo.defaults, options || {});
+
+	// how many times to update the value, and how much to increment the value on each update
+	var loops = Math.ceil(options.speed / options.refreshInterval),
+			increment = (options.to - options.from) / loops;
+
+	return $(this).each(function() {
+			var _this = this,
+					loopCount = 0,
+					value = options.from,
+					interval = setInterval(updateTimer, options.refreshInterval);
+
+			function updateTimer() {
+					value += increment;
+					loopCount++;
+					$(_this).html(value.toFixed(options.decimals));
+
+					if (typeof(options.onUpdate) == 'function') {
+							options.onUpdate.call(_this, value);
+					}
+
+					if (loopCount >= loops) {
+							clearInterval(interval);
+							value = options.to;
+
+							if (typeof(options.onComplete) == 'function') {
+									options.onComplete.call(_this, value);
+							}
+					}
+			}
+	});
+});
+
+
 $.fn.countTo = function(options) {
 	// merge the default plugin settings with the custom options
 	options = $.extend({}, $.fn.countTo.defaults, options || {});
@@ -537,19 +619,17 @@ $.fn.countTo = function(options) {
 };
 
 
-function conter(from , to)
-{
-	$.fn.countTo.defaults = {
-		from: from,  // the number the element should start at
-		to: to,  // the number the element should end at
-		speed: 600,  // how long it should take to count between the target numbers
-		refreshInterval: 100,  // how often the element should be updated
-		decimals: 0,  // the number of decimal places to show
-		onUpdate: null,  // callback method for every time the element is updated,
-		onComplete: null,  // callback method for when the element finishes updating
-	};
-}
 
+$.fn.countTo.defaults = {
+	from: from,  // the number the element should start at
+	to: to,  // the number the element should end at
+	speed: 600,  // how long it should take to count between the target numbers
+	refreshInterval: 100,  // how often the element should be updated
+	decimals: 0,  // the number of decimal places to show
+	onUpdate: null,  // callback method for every time the element is updated,
+	onComplete: null,  // callback method for when the element finishes updating
+};
+*/
 
 
     $(".tc-unit").on("click" , function(){
@@ -647,4 +727,6 @@ function conter(from , to)
             scrollTop: $("#result").offset().top
         }, 10);
     });
+})(jQuery);
+
 // ]]></script>
