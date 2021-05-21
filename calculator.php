@@ -4,11 +4,39 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <!--Plugin JavaScript file-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.1/js/ion.rangeSlider.min.js"></script>
-<style>
+<style><!--
 html{scroll-behavior:smooth}
     .PageContent--narrow {
         max-width: 1200px;
     }
+	.tc-content{width:1200px;
+        max-width: 100%;
+        font-family: Arial, Helvetica, sans-serif;
+        box-sizing: border-box;
+		margin:5px 0 15px;
+	}
+	.tc-content p{width:100%;}
+	.tc-content .video_button{
+		width: auto;
+		height: 45px;
+		margin: 5px 0;
+		padding: 2px 10px 4px;
+		font-size: 0.92857rem;
+		line-height: 39px;
+		border-radius: 2px;
+		font-family: "Trade Gothic Next",sans-serif;
+		font-style: normal;
+		font-weight: 400;
+		background: #d6be9e;
+		color: #ffffff;
+		display: inline-block;
+		text-align: center;
+	}
+	.tc-content .video_button:hover{background:#ceb28c;}
+	
+	.tc-content .cta-video_button{background:#000;}
+	.tc-content .cta-video_button:hover{background:#000;}
+	
     .tc-wrapper {
         width:1200px;
         max-width: 100%;
@@ -85,6 +113,7 @@ overflow: hidden;
         margin-bottom: 0.375em;
         margin-right: 30px;
     }
+	label.act-radio{margin:5px 30px 5px 0;}
     label.radio input {
         position: absolute;
         left: -9999px;
@@ -321,6 +350,11 @@ overflow: hidden;
     .d-none {
         display: none;
     }
+	@media screen and (max-width:1100px){
+		.tc-range-activity-wrapper{height:auto !important;margin-bottom:0 !important;}
+		.tc-submit{margin-top:40px;}
+		.tc-range-activity-wrapper .tc-input-group{flex-direction:column;}
+	}
     @media screen and (max-width:600px){
         .tc-form-wrapper {
             width: 100% !important;
@@ -346,15 +380,33 @@ overflow: hidden;
         label.radio {
             margin-right: 0px;
             font-size: 14px;
+			margin-top:15px;
         }
+		label.radio-section{margin-top:0; margin-bottom:0;}
+		label.no-class{margin-top:10px;}
+		.tc-range-activity-wrapper .act-radio{margin-bottom:0;}
+		.tc-result-wrapper .main-result .tdee{margin-top:0;}
     }
-</style>
+--></style>
+<div class="tc-content">
+<p style="text-align:center;">Use this calorie calculator as a tool to help guide you to the calorie count you need to eat!<br />
+We are aware that we are all different people, so it only makes sense that our calorie requirements will be different as well. 
+</p>
+<p style="text-align:center;">
+This calculator will give you an idea of how many calories you burn daily, as well as calorie intakes you would need to eat to crush your goals such as lose weight, gain muscle, or maintain! Nutrition and physical activity work in harmony to reach our goals, so prioritizing both aspects are highly important
+</p>
+<p style="text-align:center;"><a href="https://www.youtube.com/watch?v=gWzVlBe_Suc" class="video_button" target="_blank">Instructional Video</a></p>
+</div>
 <div class="tc-wrapper">
 <div class="tc-form-wrapper">
-<div class="tc-unit-wrapper"><span class="tc-unit active" data-unit="us"><span class="tc-unit active" data-unit="us"> Imperial Units</span></span> <span class="tc-unit" data-unit="metric"><span class="tc-unit" data-unit="metric"> Metric units</span></span><hr /></div>
+<!--<div class="tc-unit-wrapper"><span class="tc-unit active" data-unit="us"><span class="tc-unit active" data-unit="us"> Imperial Units</span></span> <span class="tc-unit" data-unit="metric"><span class="tc-unit" data-unit="metric"> Metric units</span></span><hr /></div>-->
+
+<div class="tc-radio-wrapper"><label class="radio-section">Units</label> <label class="radio"> <input type="radio" value="us" name="unit" checked="checked" class="tc-unit-radio" /> <span>Imperial</span> </label> <label class="radio"> <input type="radio" value="metric" name="unit" class="tc-unit-radio" /> <span>Metric</span> </label></div>
+<hr />
+
 <div class="tc-radio-wrapper" style="margin-top: 40px;"><label class="radio-section">Gender</label> <label class="radio"> <input type="radio" value="male" name="gender" checked="checked" /> <span>Male</span> </label> <label class="radio"> <input type="radio" value="female" name="gender" /> <span>Female</span> </label></div>
 <hr />
-<div class="tc-range-input-wrapper" style="margin-top: 40px;"><label for="">Age <small>(years)</small></label>
+<div class="tc-range-input-wrapper" style="margin-top: 40px;"><label class="no-class">Age <small>(years)</small></label>
 <div class="tc-input-group">
 <div class="slider"><input type="text" id="age" class="js-range-slider" data-min="19" value="30" data-max="70" name="my_range" /></div>
 <div class="input"><input type="text" class="one-input" value="30" /></div>
@@ -362,14 +414,14 @@ overflow: hidden;
 </div>
 <hr />
 <div class="tc-range-input-wrapper" style="margin-top: 40px;">
-<div class="group metricUnit"><label for="">Height <small>(feet/inches)</small></label>
+<div class="group metricUnit"><label class="no-class">Height <small>(feet/inches)</small></label>
 <div class="tc-input-group">
 <div class="slider"><input type="text" class="ftin" name="my_range" value="5ft 3in" /></div>
 <div class="input f" style="margin-right: 10px;"><input type="text" class="two-input" id="h-ft" value="5" /></div>
 <div class="input i"><input type="text" class="two-input" id="h-in" value="3" /></div>
 </div>
 </div>
-<div class="group usUnit hide"><label for="">Height <small>(cm)</small></label>
+<div class="group usUnit hide"><label class="no-class">Height <small>(cm)</small></label>
 <div class="tc-input-group">
 <div class="slider"><input type="text" data-min="100" value="137" data-max="220" class="js-range-slider" name="my_range" /></div>
 <div class="input f" style="margin-right: 10px;"><input type="text" class="one-input" id="h-cm" value="4" /></div>
@@ -378,13 +430,13 @@ overflow: hidden;
 </div>
 <hr />
 <div class="tc-range-input-wrapper" style="margin-top: 40px;">
-<div class="group metricUnit"><label for="">Weight <small>(lbs)</small></label>
+<div class="group metricUnit"><label class="no-class">Weight <small>(lbs)</small></label>
 <div class="tc-input-group">
 <div class="slider"><input type="text" class="js-range-slider" data-min="60" value="130" data-max="399" name="my_range" /></div>
 <div class="input"><input type="text" class="one-input" id="w-lbs" value="130" /></div>
 </div>
 </div>
-<div class="group usUnit hide"><label for="">Weight <small>(kg)</small></label>
+<div class="group usUnit hide"><label class="no-class">Weight <small>(kg)</small></label>
 <div class="tc-input-group">
 <div class="slider"><input type="text" class="js-range-slider" data-min="30" value="60" data-max="150" name="my_range" /></div>
 <div class="input"><input type="text" class="one-input" id="w-kg" value="30" /></div>
@@ -394,16 +446,22 @@ overflow: hidden;
 <hr />
 <div class="tc-radio-wrapper" style="margin-top: 40px;"><label class="radio-section">Goal</label> <label class="radio"> <input type="radio" value="maintain" name="goal" checked="checked" /> <span>Maintain Weight</span> </label> <label class="radio"> <input type="radio" value="lose" name="goal" /> <span>Lose Weight</span> </label> <label class="radio"> <input type="radio" value="gain" name="goal" /> <span>Gain Weight</span> </label></div>
 <hr />
-<div class="tc-range-input-wrapper" style="margin-top: 40px;"><label for="">Physical Activity</label>
-<div class="tc-input-group"><select id="act">
-<option value="1.2">SEDENTARY (NO EXERCISE)</option>
-<option value="1.375">LIGHT EXERCISE (1X-3X WORKOUTS PER WEEK)</option>
-<option value="1.55">MODERATE (3X-4X WORKOUTS PER WEEK)</option>
-<option value="1.725">ACTIVE (5X WORKOUTS PER WEEK)</option>
-<option value="1.9">EXTREME ACTIVITY (5X+ WORKOUTS PER WEEK/TRAINED ATHLETE)</option>
-</select></div>
+<div class="tc-range-input-wrapper tc-range-activity-wrapper" style="margin-top: 40px; height:70px;"><label for="">Physical Activity</label>
+<div class="tc-input-group">
+<label class="radio act-radio"> <input type="radio" value="1.2" name="act" checked="checked" /> <span>SEDENTARY (NO EXERCISE)</span> </label> <label class="radio act-radio"> <input type="radio" value="1.375" name="act" /> <span>LIGHT EXERCISE (1X-3X WORKOUTS PER WEEK)</span> </label> 
 </div>
-<div class="tc-radio-wrapper" style="text-align: right;"><button class="tc-submit">Calculate TDEE</button></div>
+</div>
+<div class="tc-range-input-wrapper tc-range-activity-wrapper" style="margin-top: 0px; height:50px; margin-bottom:0;">
+<div class="tc-input-group">
+<label class="radio act-radio"> <input type="radio" value="1.55" name="act" /> <span>MODERATE (3X-4X WORKOUTS PER WEEK)</span> </label> <label class="radio act-radio"> <input type="radio" value="1.725" name="act" /> <span>ACTIVE (5X WORKOUTS PER WEEK)</span> </label> 
+</div>
+</div>
+<div class="tc-range-input-wrapper tc-range-activity-wrapper" style="margin-top: 0px; height:50px;">
+<div class="tc-input-group">
+<label class="radio act-radio"> <input type="radio" value="1.9" name="act" /> <span>EXTREME ACTIVITY (5X+ WORKOUTS PER WEEK/TRAINED ATHLETE)</span> </label>
+</div>
+</div>
+<div class="tc-radio-wrapper" style="text-align: center;"><button class="tc-submit">Calculate TDEE</button></div>
 </div>
 <div class="tc-result-wrapper" id="result">
 <div class="main-result"><span class="label">TDEE</span> <span class="tdee"><span id="tdee">1734</span> <samp>Calories/day</samp></span>
@@ -437,6 +495,9 @@ overflow: hidden;
 </table>
 </div>
 </div>
+</div>
+<div class="tc-content">
+<p style="text-align:center;"><a href="https://kickassathleisure.zendesk.com/hc/en-us" class="video_button" target="_blank">Have Questions?</a> &nbsp; <a href="https://kickassathleisure.com/pages/trainerskaathleisur" class="video_button cta-video_button">Talk to a Trainer</a></p>
 </div>
 <script>// <![CDATA[
 (function($) {
@@ -548,8 +609,7 @@ $(".js-range-slider").ionRangeSlider({
     };
 
 
-
-    $(".tc-unit").on("click" , function(){
+    /*$(".tc-unit").on("click" , function(){
         $(".tc-unit").removeClass('active');
         $(this).addClass('active');
         if($(this).attr('data-unit') == "us"){
@@ -560,13 +620,26 @@ $(".js-range-slider").ionRangeSlider({
             $('.group.usUnit').removeClass('hide');
         }
         
+    });*/
+	$(".tc-unit-radio").on("click" , function(){
+        if($("input[name=unit]:checked").val() == "us"){
+            $('.group.metricUnit').removeClass('hide');
+            $('.group.usUnit').addClass('hide');
+        }else {
+            $('.group.metricUnit').addClass('hide');
+            $('.group.usUnit').removeClass('hide');
+        }
+        
     });
 
     $(".tc-submit").on('click', function(){
-        var unit = $('.tc-unit.active').attr('data-unit');
+        //var unit = $('.tc-unit.active').attr('data-unit');
+		var unit = $("input[name=unit]:checked").val();
         var age = Number($("#age").val());
-        var act = $("#act").val();
+        var act = $("input[name=act]:checked").val();
         var gender = $("input[name=gender]:checked").val();
+		
+		console.log(unit)
         
         if(unit == "metric"){
         
@@ -645,5 +718,4 @@ $(".js-range-slider").ionRangeSlider({
         }, 10);
     });
 })(jQuery);
-
 // ]]></script>
