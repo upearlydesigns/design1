@@ -37,6 +37,8 @@ html{scroll-behavior:smooth}
 	.tc-content .cta-video_button{background:#000;}
 	.tc-content .cta-video_button:hover{background:#000;}
 	
+	.tc-content-bottom{width:70%; margin-left:0 !important;}
+	
     .tc-wrapper {
         width:1200px;
         max-width: 100%;
@@ -351,7 +353,7 @@ overflow: hidden;
         display: none;
     }
 	@media screen and (max-width:1100px){
-		.tc-range-activity-wrapper{height:auto !important;margin-bottom:0 !important;}
+		.tc-range-activity-wrapper{height:auto !important; margin-bottom:0 !important; margin-top:0 !important;}
 		.tc-submit{margin-top:40px;}
 		.tc-range-activity-wrapper .tc-input-group{flex-direction:column;}
 	}
@@ -382,10 +384,16 @@ overflow: hidden;
             font-size: 14px;
 			margin-top:15px;
         }
+		
+		.tc-range-input-wrapper{margin-top:20px !important;}
+		.tc-radio-wrapper{margin-top:20px !important;}
+		
 		label.radio-section{margin-top:0; margin-bottom:0;}
-		label.no-class{margin-top:10px;}
+		label.no-class{margin-top:0px;}
 		.tc-range-activity-wrapper .act-radio{margin-bottom:0;}
 		.tc-result-wrapper .main-result .tdee{margin-top:0;}
+		.tc-content-bottom{width:100%;}
+		.tc-range-activity-wrapper{margin-top:0 !important;}
     }
 --></style>
 <div class="tc-content">
@@ -496,7 +504,7 @@ This calculator will give you an idea of how many calories you burn daily, as we
 </div>
 </div>
 </div>
-<div class="tc-content">
+<div class="tc-content tc-content-bottom">
 <p style="text-align:center;"><a href="https://kickassathleisure.zendesk.com/hc/en-us" class="video_button" target="_blank">Have Questions?</a> &nbsp; <a href="https://kickassathleisure.com/pages/trainerskaathleisur" class="video_button cta-video_button">Talk to a Trainer</a></p>
 </div>
 <script>// <![CDATA[
