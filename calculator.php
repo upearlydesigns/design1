@@ -505,7 +505,7 @@ This calculator will give you an idea of how many calories you burn daily, as we
 </div>
 </div>
 <div class="tc-content tc-content-bottom">
-<p style="text-align:center;"><a href="https://kickassathleisure.zendesk.com/hc/en-us" class="video_button" target="_blank">Have Questions?</a> &nbsp; <a href="https://kickassathleisure.com/pages/trainerskaathleisur" class="video_button cta-video_button">Talk to a Trainer</a></p>
+<p style="text-align:center;"><span style="font-weight:bold; display:inline-block; margin-bottom:10px;">Have Questions?</span><br /><a href="https://kickassathleisure.com/pages/trainerskaathleisure" class="video_button cta-video_button">Talk to a Trainer</a></p>
 </div>
 <script>// <![CDATA[
 (function($) {
@@ -720,6 +720,7 @@ $(".js-range-slider").ionRangeSlider({
             $("#tdee_goal").html((tdee+(20*(tdee/100))).toFixed(0));
 		}else {
             $(".isGoal").addClass('d-none');
+
         }
         $('html, body').animate({
             scrollTop: $("#result").offset().top
